@@ -2,12 +2,16 @@ import React, { Component } from "react";
 
 class App extends Component {
   state = { message: "" };
-  updateMessage = event => this.setState({ message: event.target.value });
+  updateMessage = (event) => this.setState({ message: event.target.value });
   componentDidMount() {
     // TODO: read from local storage, and if we find a message there, log it to the console
+    const stateString = localStorage.getItem("stateString");
+    console.log(stateString);
   }
   componentDidUpdate() {
     // TODO: save the message from our component's state to the browser's local storage
+    const stateString = JSON.stringify(this.state);
+    localStorage.setItem("stateString", stateString);
   }
   render() {
     return (
